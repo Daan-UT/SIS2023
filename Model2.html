@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="icon" href="Images/ApolloTyres.png">
+      <title>Model explorer</title>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <!-- Custom styles for this template -->
+      <link href="dashboard.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   </head>
+   <body>
+      <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+         <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="model1.html"><img src="Images/apollo-tyres-brand-logo.png" width="80%" height="35px"></img></a>
+         <div class="col-sm-3 col-md-2 mr-0 mb-3" style="float:right;">
+            <div class="pulsered" id="pulse"> </div>
+         </div>
+      </nav>
+      <div class="container-fluid">
+         <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+               <div class="sidebar-sticky">
+                  <ul class="nav flex-column">
+                     <li class="nav-item">
+                        <a class="list-group-item list-group-item-action" href="./Model1.html">
+                        Model 1 
+                        </a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="list-group-item list-group-item-action active" href="./Model2.html">
+                        Model 2
+                        </a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="list-group-item list-group-item-action" href="./Swagger.html">
+                        Swagger
+                        </a>
+                     </li>
+                  </ul>
+               </div>
+            </nav>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+               <div class="row">
+                  <div class="col-md-6">
+                     <form action="http://localhost:5000/predict" class=form-label method="post" id="model2">
+                        <div class="form-group">
+                           <label for="test_pressure_psi">Test Pressure (psi) :</label>
+                           <i class="fa fa-question-circle" data-toggle="tooltip" data-html="true" title="Pressure at which tire is inflated for test of dimensions."></i>
+                           <div class= "input-group">
+                              <input type="number" class="form-control" id="test_pressure_psi" placeholder="Value between 1.8-2.2" required min="1.8" max="2.2" />
+                              <div class="input-group-append">
+                                 <span class="input-group-text" id="basic-addon2">Bar</span>
+                              </div>
+                              <div class="invalid-feedback">Please fill out a value between 1.8 and 2.2.</div>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <label for="belt1_material">Belt Material:</label>
+                           <i class="fa fa-question-circle" data-toggle="tooltip" data-html="true" title="Belt material"></i>
+                           <select id="belt1_material" name="belt1_material">
+                              <option value="SA01">SA01</option>
+                              <option value="SA13">SA13</option>
+                              <option value="SB01">SB01</option>
+                              <option value="USA01">USA01</option>
+                              <option value="SB10">SB10</option>
+                              <option value="SB11">SB11</option>
+                              <option value="SB13">SB13</option>
+                              <option value="SA14">SA14</option>
+                              <option value="SA10">SA10</option>
+                              <option value="P002">P002</option>
+                              <option value="SA09">SA09</option>
+                              <option value="1382">1382</option>
+                              <option value="NSA01">NSA01</option>
+                           </select>
+                        </div>
+                        <div class="form-group">
+                           <label for="belt1_angle">Belt Angle:</label>
+                           <i class="fa fa-question-circle" data-toggle="tooltip" data-html="true" title="Angle at which belt is set in the tires"></i>
+                           <div class= "input-group mb-3">
+                              <input type="number" class="form-control" id="belt1_angle" placeholder="Value between 0-90" required min="0" max="90" />
+                              <div class="input-group-append">
+                                 <span class="input-group-text" id="basic-addon2">Degrees</span>
+                              </div>
+                              <div class="invalid-feedback">Please fill out a value between 0 and 90.</div>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <label for="capply">Cap ply:</label>
+                           <i class="fa fa-question-circle" data-toggle="tooltip" data-html="true" title="Layers of rubberized parallel nylon cords that is wrapped circumferentially over the steel belts and under the tread."></i>
+                           <select id="capply" name="capply">
+                              <option value="NB01">NB01</option>
+                              <option value="DE04">DE04</option>
+                              <option value="NB04">NB04</option>
+                              <option value="P140">P140</option>
+                              <option value="NB05">NB05</option>
+                              <option value="P139">P139</option>
+                              <option value="NB06">NB06</option>
+                           </select>
+                        </div>
+                        <div class="form-group">
+                           <label for="ply1">Ply</label>
+                           <i class="fa fa-question-circle" data-toggle="tooltip" data-html="true" title="How many layers of rubber is on the tyre"></i>
+                           <select id="ply1" name="ply1">
+                              <option value="PG01">PG01</option>
+                              <option value="PK13">PK13</option>
+                              <option value="PK01">PK01</option>
+                              <option value="PK05">PK05</option>
+                              <option value="RL02">RL02</option>
+                              <option value="RL01">RL01</option>
+                              <option value="PF01">PF01</option>
+                              <option value="FE05">FE05</option>
+                              <option value="RL08">RL08</option>
+                              <option value="PF05">PF05</option>
+                              <option value="PG13">PG13</option>
+                              <option value="RL07">RL07</option>
+                              <option value="PH01">PH01</option>
+                              <option value="PF02">PF02</option>
+                              <option value="PK03">PK03</option>
+                              <option value="RL03">RL03</option>
+                              <option value="PF04">PF04</option>
+                              <option value="RL06">RL06</option>
+                              <option value="PG02">PG02</option>
+                              <option value="PG14">PG14</option>
+                              <option value="PK08">PK08</option>
+                              <option value="PN01">PN01</option>
+                              <option value="BE01">BE01</option>
+                              <option value="RL04">RL04</option>
+                              <option value="PN02">PN02</option>
+                              <option value="RL11">RL11</option>
+                           </select>
+                        </div>
+                        <div class="form-group">
+                           <label for="bead_height">Bead Height:</label>
+                           <i class="fa fa-question-circle" data-toggle="tooltip" data-html="true" title="Height of the bead"></i>
+                           <div class= "input-group mb-3">
+                              <input type="number" class="form-control" id="bead_height" placeholder="Value between 20-40" required min="20" max="40" step="5" />
+                              <div class="input-group-append">
+                                 <span class="input-group-text" id="basic-addon2">mm</span>
+                              </div>
+                              <div class="invalid-feedback">Please fill out a value between 20 and 40.</div>
+                           </div>
+                        </div>
+                        <div id="cap-strip-form">
+                           <div class="form-group">
+                              <label for="cap_strip_layup">Cap Strip Layup:</label>
+                              <div class="input-group">
+                                 <input type="number" class="form-control" id="cap_strip1" pattern="\d" placeholder="Value between 1-2" required min="1" max="2" step="0.5">
+                                 <div class="invalid-feedback">Please fill out a value between 1 and 2.</div>
+                              </div>
+                              <div class="input-group">
+                                 <input type="number" class="form-control" id="cap_strip2" pattern="\d" placeholder="Value between 1-2" required min="1" max="2" step="0.5">
+                                 <div class="invalid-feedback">Please fill out a value between 1 and 2.</div>
+                              </div>
+                              <div class="input-group">
+                                 <input type="number" class="form-control" id="cap_strip3" pattern="\d" placeholder="Value between 1-2" required min="1" max="2" step="0.5">
+                                 <div class="invalid-feedback">Please fill out a value between 1 and 2.</div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <label for="number_of_plies">Number of Plies:</label>
+                           <i class="fa fa-question-circle" data-toggle="tooltip" data-html="true" title="Amount of plies"></i>
+                           <input type="number" class="form-control" id="number_of_plies" placeholder="Value between 1-2" required min="1" max="2" />
+                           <div class="invalid-feedback">Please fill out a value between 1 and 2.</div>
+                        </div>
+                        <div class="form-group">
+                           <label for="mould_overall_diameter">Mould Overall Diameter:</label>
+                           <i class="fa fa-question-circle" data-toggle="tooltip" data-html="true" title="Overall diameter of the mould"></i>
+                           <div class= "input-group mb-3">
+                              <input type="number" class="form-control" id="mould_overall_diameter" placeholder="Value between 500-850" required min="500" max="850" />
+                              <div class="input-group-append">
+                                 <span class="input-group-text" id="basic-addon2">mm</span>
+                              </div>
+                              <div class="invalid-feedback">Please fill out a value between 500 and 850.</div>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <label for="rim_protector">Rim Protector:</label>
+                           <i class="fa fa-question-circle" data-toggle="tooltip" data-html="true" title="They're strips of plastic or rubber that fit across the edge of the rims to prevent damage that can occur when catching the kerb"></i>
+                           <input type="number" class="form-control" id="rim_protector" placeholder="Value between 1-2" required min="1" max="2" step="1"/>
+                           <div class="invalid-feedback">Please fill out a value between 1 and 2.</div>
+                        </div>
+                        <div class="form-group">
+                           <label for="sidewall_type">Sidewall Type:</label>
+                           <i class="fa fa-question-circle" data-toggle="tooltip" data-html="true" title="The type of sidewall used"></i>
+                           <select id="sidewall_type" name="sidewall_type">
+                              <option value="S5">S5</option>
+                              <option value="S2">S2</option>
+                              <option value="S0">S0</option>
+                              <option value="S1">S1</option>
+                              <option value="S6">S6</option>
+                              <option value="S4">S4</option>
+                              <option value="S7">S7</option>
+                              <option value="S3">S3</option>
+                           </select>
+                        </div>
+                        <div class="form-group">
+                           <label for="mould_section_width">Mould Section Width:</label>
+                           <i class="fa fa-question-circle" data-toggle="tooltip" data-html="true" title="Section width of the mould"></i>
+                           <div class= "input-group mb-3">
+                              <input type="number" class="form-control" id="mould_section_width" placeholder="Value between 199-254" required min="199" max="254" />
+                              <div class="input-group-append">
+                                 <span class="input-group-text" id="basic-addon2">mm</span>
+                              </div>
+                              <div class="invalid-feedback">Please fill out a value between 199 and 254.</div>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <label for="mould_based_width">Mould Based Width:</label>
+                           <i class="fa fa-question-circle" data-toggle="tooltip" data-html="true" title="Based width of the mould"></i>
+                           <div class= "input-group mb-3">
+                              <input type="number" class="form-control" id="mould_based_width" placeholder="Value between 10-500" required min="10" max="500" />
+                              <div class="input-group-append">
+                                 <span class="input-group-text" id="basic-addon2">mm</span>
+                              </div>
+                              <div class="invalid-feedback">Please fill out a value between 10 and 500.</div>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <label for="sw_target_exc">SW Target Exc:</label>
+                           <i class="fa fa-question-circle" data-toggle="tooltip" data-html="true" title="Dimensions of the sidewall of the tires"></i>						
+                           <div class= "input-group mb-3">
+                              <input type="number" class="form-control" id="sw_target_exc" placeholder="Value between 120-190" required min="120" max="190" step="5"/>
+                              <div class="input-group-append">
+                                 <span class="input-group-text" id="basic-addon2">mm</span>
+                              </div>
+                              <div class="invalid-feedback">Please fill out a value between 120 and 190.</div>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <label for="diameter_target_exc">Diameter Target Exc:</label>
+                           <i class="fa fa-question-circle" data-toggle="tooltip" data-html="true" title="Diameter Target Exc"></i>
+                           <div class= "input-group">
+                              <input type="number" class="form-control" id="diameter_target_exc" placeholder="Value between 10-500" required min="10" max="500" />
+                              <div class="input-group-append">
+                                 <span class="input-group-text" id="basic-addon2">mm</span>
+                              </div>
+                              <div class="invalid-feedback">Please fill out a value between 10 and 500.</div>
+                           </div>
+                        </div>
+                        <div class="form-group">
+                           <label for="aspect_ratio">Aspect Ratio:</label>
+                           <i class="fa fa-question-circle" data-toggle="tooltip" data-html="true" title="The aspect ratio"></i>
+                           <input type="number" class="form-control" id="aspect_ratio" placeholder="Value between 30-70" required min="30" max="70" step="5"/>
+                           <div class="invalid-feedback">Please fill out a value between 30 and 70.</div>
+                        </div>
+                        <input value="Submit" type="button" onclick="submitform()">
+                     </form>
+                  </div>
+                  <div class="col-md-6">
+                     <h1> Result </h1>
+                     <form>
+                        <fieldset disabled>
+                           <div class="form-group">
+                              <label for="disabledTextInput">Predicted maximum tyre width</label>
+                              <input type="text" id="Tyre_width" class="form-control">
+                           </div>
+                           <div class="form-group">
+                              <label for="disabledSelect">Predicted max difference to etrto target</label>
+                              <input type="text" id="Etrto" class="form-control">
+                           </div>
+                        </fieldset>
+                     </form>
+                  </div>
+               </div>
+            </main>
+         </div>
+      </div>
+      <!-- Bootstrap core JavaScript
+         ================================================== -->
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+      <script>
+         if (!window.jQuery) {
+             document.write('<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" crossorigin="anonymous"><\/script>');
+         }
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
+      <script>
+         $(function () {
+                   $('[data-toggle="tooltip"]').tooltip()
+               })
+               // JavaScript code to handle form submission
+               $(document).ready(function() {
+                   setInterval(function() {
+                       $.ajax({
+                           url: "http://localhost:5000/heartbeat",
+                           type: "GET",
+                           success: function(response) {
+                               document.getElementById("pulse").setAttribute("class", "pulsegreen")
+                           },
+                           error: function(error) {
+                               document.getElementById("pulse").setAttribute("class", "pulsered");
+                           }
+                       });
+                   }, 1000); // Send heartbeat request every 1 second
+               });
+               function submitform() {
+                   form = document.getElementById('model2')
+                   event.preventDefault(); // Prevent form from submitting normally
+                   if (form.checkValidity()) {
+                       // Create a JSON object from form data
+                       var formData = {
+                           test_pressure_psi: $('#test_pressure_psi').val(),
+                           belt1_material: $('#belt1_material').val(),
+                           belt1_angle: $('#belt1_angle').val(),
+                           capply: $('#capply').val(),
+                           ply1: $('#ply1').val(),
+                           bead_height: $('#bead_height').val(),
+                           cap_strip_layup: $('#cap_strip1').val() + '-' + $('#cap_strip2').val() + '-' + $('#cap_strip3').val(),
+                           number_of_plies: $('#number_of_plies').val(),
+                           mould_overall_diameter: $('#mould_overall_diameter').val(),
+                           rim_protector: $('#rim_protector').val(),
+                           sidewall_type: $('#sidewall_type').val(),
+                           mould_section_width: $('#mould_section_width').val(),
+                           mould_based_width: $('#mould_based_width').val(),
+                           sw_target_exc: $('#sw_target_exc').val(),
+                           diameter_target_exc: $('#diameter_target_exc').val(),
+                           aspect_ratio: $('#aspect_ratio').val()
+                       };
+                       // Send the data as a JSON object through POST request
+                       $.ajax({
+                           url: 'http://localhost:5000/maxwidthpredict',		 // Replace with your REST endpoint URL
+                           type: 'POST',
+                           data: JSON.stringify(formData),
+                           contentType: 'application/json',
+                           success: function (response) {
+                               // Handle the success response
+                               const myArray = response.split(",");
+               document.getElementById('Tyre_width').value=myArray[0]
+               document.getElementById('Etrto').value=myArray[1]
+                           },
+                           error: function (error) {
+                               // Handle the error response
+                               console.log('Error:', error);
+                           }
+                       });
+                   } else {
+                       form.classList.add('was-validated')
+                   }
+               };
+               (function () {
+                   'use strict';
+                   window.addEventListener('load', function () {
+                       // Fetch all the forms we want to apply custom validation styles
+                       var inputs = document.getElementsByClassName('form-control')
+               
+                       // Loop over each input and watch blue event
+                       var validation = Array.prototype.filter.call(inputs, function (input) {
+               
+                           input.addEventListener('blur', function (event) {
+                               // reset
+                               input.classList.remove('is-invalid')
+                               input.classList.remove('is-valid')
+               
+                               if (input.checkValidity() === false) {
+                                   input.classList.add('is-invalid')
+                               }
+                               else {
+                                   input.classList.add('is-valid')
+                               }
+                           }, false);
+                       });
+                   }, false);
+               })()
+            
+      </script>
+   </body>
+</html>
